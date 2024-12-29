@@ -5,7 +5,7 @@
 #import <Foundation/NSBundle.h>
 #import <Foundation/NSPathUtilities.h>
 
-#ifndef THEOS_PACKAGE_SCHEME_ROOTHIDE
+#ifdef THEOS_PACKAGE_SCHEME_ROOTFUL
 #import <rootless.h>
 #endif
 
@@ -15,7 +15,12 @@
 %hook TFSAPIRequest
 
 -(NSString*)endpointURLString{
+	#ifdef THEOS_PACKAGE_SCHEME_ROOTFUL
 	NSString *pathFile = ROOT_PATH_NS(@"/var/mobile/Library/Preferences/com.archiverxp.stchanger.plist");
+	#else
+	NSString *pathFile = @"/var/mobile/Library/Preferences/com.archiverxp.stchanger.plist";
+	#endif
+
 	if(pathFile == nil){
 		NSLog(@"NULL");
 	}
