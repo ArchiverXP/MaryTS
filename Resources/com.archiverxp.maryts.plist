@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>entry</key>
+	<dict>
+		<key>cell</key>
+		<string>PSLinkCell</string>
+		<key>icon</key>
+		<string>TestIcon.png</string>
+		<key>label</key>
+		<string>Test</string>
+	</dict>
+	<key>title</key>
+	<string>Test Settings</string>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>defaults</key>
+			<string>com.archiverxp.maryts</string>
+			<key>label</key>
+			<string>Server URL:</string>
+			<key>default</key>
+			<string>http://192.168.0.108:3020</string>
+		</dict>
+	</array>
+</dict>
+</plist>
