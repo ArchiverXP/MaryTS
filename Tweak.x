@@ -5,7 +5,7 @@
 #import <Foundation/NSBundle.h>
 #import <Foundation/NSPathUtilities.h>
 
-#ifdef THEOS_PACKAGE_SCHEME_ROOTFUL
+#ifdef THEOS_PACKAGE_SCHEME_ROOTLESS
 #import <rootless.h>
 #endif
 
@@ -18,7 +18,7 @@
 	#ifdef THEOS_PACKAGE_SCHEME_ROOTFUL
 	NSString *pathFile = ROOT_PATH_NS(@"/var/mobile/Library/Preferences/com.archiverxp.stchanger.plist");
 	#else
-	NSString *pathFile = @"/var/mobile/Library/Preferences/com.archiverxp.stchanger.plist";
+	NSString *pathFile = @"/var/jb/var/mobile/Library/Preferences/com.archiverxp.stchanger.plist";
 	#endif
 
 	if(pathFile == nil){
@@ -30,6 +30,9 @@
 	NSString *serverURLF = [[NSBundle mainBundle] bundleIdentifier];
     serverURLF = [serverURLF stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 	NSString *serverURL = [plist objectForKey:@"serverURL"];
+	if(!serverURL){
+		return %orig;
+	}
 	if([%orig containsString:@"https://api.twitter.com"]){
 		NSLog(@"Patching base API path...");
 		
